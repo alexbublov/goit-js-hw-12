@@ -4,9 +4,9 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 const galleryContainer = document.querySelector('.gallery');
 const loader = document.querySelector('.loader');
 
-const simplelightbox = new SimpleLightBox('.gallery a');
-const createGallery = (images) => {
-    const markup = images.map(image => `
+
+const createGalleryMarkup = (image) => {
+    return `
         <li class="gallery-item">
         <a href="${image.largeImageURL}">
             <img class="gallery-image" src="${image.webformatURL}" alt="${image.tags}" title="${image.tags}" />
@@ -22,20 +22,30 @@ const createGallery = (images) => {
             </ul>
         </a>
         </li>
-    `).join('');
+    `;
+};
+
+const simplelightbox = new SimpleLightBox('.gallery a');
+const createGallery = (images) => {
+    const markup = images.map(createGalleryMarkup).join('');
     galleryContainer.innerHTML = markup;
     simplelightbox.refresh();
-}
+};
+const appendGallery = (images) => {
+    const markup = images.map(createGalleryMarkup).join('');
+    galleryContainer.insertAdjacentHTML('beforeend', markup);
+    simplelightbox.refresh();
+};
 
 const clearGallery = () => {
     galleryContainer.innerHTML = '';
     simplelightbox.refresh();
-}
+};
 const showLoader = () => {
     loader.classList.remove('hidden');
-}
+};
 const hideLoader = () => {
     loader.classList.add('hidden');
-}
+};
 
-export { createGallery, clearGallery, showLoader, hideLoader };
+export { createGallery, appendGallery, clearGallery, showLoader, hideLoader };
