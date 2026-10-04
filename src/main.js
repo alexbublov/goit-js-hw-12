@@ -57,16 +57,19 @@ searchForm.addEventListener('submit', async (e) => {
 loadMoreButton.addEventListener('click', async () => {
     showLoader();
     currentPage++;
+    hideLoadMoreButton();
     try {
         const images = await getImagesByQuery(query, currentPage);
         appendGallery(images.hits);
         console.log(currentPage, totalPages);
         if (currentPage === totalPages) {
-            hideLoadMoreButton();
             iziToast.error({
                 title: 'Error',
                 message: 'Sorry, there are no more images matching your search query!',
             });
+        }
+        else {
+            showLoadMoreButton();
         }
     } catch (error) {
         hideLoadMoreButton();
