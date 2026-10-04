@@ -3,6 +3,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const galleryContainer = document.querySelector('.gallery');
 const loader = document.querySelector('.loader');
+const loadMoreButton = document.querySelector('.load-more');
 
 
 const createGalleryMarkup = (image) => {
@@ -48,4 +49,12 @@ const hideLoader = () => {
     loader.classList.add('hidden');
 };
 
-export { createGallery, appendGallery, clearGallery, showLoader, hideLoader };
+const showLoadMoreButton = () => {
+    loadMoreButton.classList.remove('hidden');
+};
+
+const hideLoadMoreButton = () => {
+    loadMoreButton.classList.add('hidden');
+};
+
+export { createGallery, appendGallery, clearGallery, showLoader, hideLoader, showLoadMoreButton, hideLoadMoreButton };
