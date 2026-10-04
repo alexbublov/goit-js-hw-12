@@ -1,0 +1,89 @@
+/**
+  |============================
+  | include css partials with
+  | default @import url()
+  |============================
+*/
+/* Common styles */
+@import url('./reset.css');
+
+.container {
+  max-width: 1128px;
+  margin: 0 auto;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+.gallery-item {
+  width: calc((100% - 48px) / 3);
+  box-sizing: border-box;
+  border: 1px solid #808080;
+}
+
+.gallery-image {
+  width: 100%;
+  object-fit: cover;
+  height: 200px;
+  display: block;
+}
+
+.image-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.image-info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-info-label {
+  font-weight: bold;
+}
+
+.image-info-value {
+  font-weight: normal;
+}
+
+.loader {
+  margin: 0 auto;
+
+  --color-1: #000;
+  --size: 1px;
+  width: calc(48 * var(--size));
+  height: calc(48 * var(--size));
+  border: calc(5 * var(--size)) solid var(--color-1);
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.hidden {
+  display: none;
+}
